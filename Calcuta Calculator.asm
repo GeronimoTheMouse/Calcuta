@@ -1,7 +1,6 @@
 ;@Author: Michelangelo Sarafis
 ;@Description: A simple calculator written assembly(NASM). The C standard library
 ;has been used for the user input output.
-;@License: Under the MIT public license
 ;@Version: 1.0
 
 %include "atof.asm"
@@ -313,6 +312,8 @@ _main:
     ;we load the number from the buffer to the FPU
     fld qword[buff]
     
+    ;check if the denominator is zero. 
+    ;If yes, we display the appropriate message
     push 0
     push buff
     call compare_decimal_with_integer
@@ -362,5 +363,6 @@ _main:
     ;we print to the console that the program will exit, and we safely do so. 
     push exiting_message
     call _printf
-    add esp, 4             
+    add esp, 4
+	push 0
     call _ExitProcess@4
