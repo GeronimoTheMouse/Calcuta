@@ -364,5 +364,5 @@ _main:
     push exiting_message
     call _printf
     add esp, 4
-	push 0
+    push 0
     call _ExitProcess@4
